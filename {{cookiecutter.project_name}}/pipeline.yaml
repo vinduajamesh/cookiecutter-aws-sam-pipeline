@@ -167,7 +167,7 @@ Resources:
                         - Name: SourceCodeAsZip
                       OutputArtifacts:
                         - Name: BuildArtifactAsZip
-                - Name: Beta
+                - Name: Dev
                   Actions:
                     - Name: CreateChangeSet
                       ActionTypeId:
@@ -179,8 +179,9 @@ Resources:
                       # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Beta
-                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-dev
+                        ParameterOverrides: '{"Environment": "dev"}'
+                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Dev
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -195,12 +196,12 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Beta
-                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-dev
+                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Dev
                       OutputArtifacts:
-                        - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}BetaChangeSet
+                        - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}DevChangeSet
                       RunOrder: 2
-                - Name: Gamma
+                - Name: Beta
                   Actions:
                     - Name: CreateChangeSet
                       ActionTypeId:
@@ -211,8 +212,9 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Gamma
-                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Gamma
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-beta
+                        ParameterOverrides: '{"Environment": "beta"}'
+                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -227,8 +229,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Gamma
-                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Gamma
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-beta
+                        ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                       OutputArtifacts:
                         - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}GammaChangeSet
                       RunOrder: 2
@@ -250,7 +252,8 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Prod
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-prod
+                        ParameterOverrides: '{"Environment": "prod"}'
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
@@ -266,7 +269,7 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
-                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-Prod
+                        StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-prod
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Prod
                       OutputArtifacts:
                         - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}ProdChangeSet
