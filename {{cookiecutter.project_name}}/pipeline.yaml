@@ -183,8 +183,8 @@ Resources:
                         ParameterOverrides: >
                             {
                                 "Environment": "dev",
-                                "TableName": {{cookiecutter.project_table_name}},
-                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                                "TableName": "{{cookiecutter.project_table_name}}",
+                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
                             } 
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Dev
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
@@ -221,8 +221,8 @@ Resources:
                         ParameterOverrides: >
                             {
                                 "Environment": "beta",
-                                "TableName": {{cookiecutter.project_table_name}},
-                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                                "TableName": "{{cookiecutter.project_table_name}}",
+                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
                             }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
@@ -266,8 +266,8 @@ Resources:
                         ParameterOverrides: >
                             {
                                 "Environment": "prod",
-                                "TableName": {{cookiecutter.project_table_name}}',
-                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                                "TableName": "{{cookiecutter.project_table_name}}",
+                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
                             }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
