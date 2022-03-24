@@ -180,7 +180,12 @@ Resources:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-dev
-                        ParameterOverrides: '{"Environment": "dev"}'
+                        ParameterOverrides: >
+                            {
+                                "Environment": "dev",
+                                "TableName": {{cookiecutter.project_table_name}},
+                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                            } 
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Dev
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
@@ -213,7 +218,12 @@ Resources:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-beta
-                        ParameterOverrides: '{"Environment": "beta"}'
+                        ParameterOverrides: >
+                            {
+                                "Environment": "beta",
+                                "TableName": {{cookiecutter.project_table_name}},
+                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                            }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
@@ -253,7 +263,12 @@ Resources:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-prod
-                        ParameterOverrides: '{"Environment": "prod"}'
+                        ParameterOverrides: >
+                            {
+                                "Environment": "prod",
+                                "TableName": {{cookiecutter.project_table_name}}',
+                                "PrimaryKey": {{cookiecutter.project_primary_key}}
+                            }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
