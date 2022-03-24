@@ -3,5 +3,7 @@
     "source_code_repo": [
         "CodeCommit",
         "Github"
-    ]
+    ],
+    "project_table_name": "objects",
+    "project_primary_key": "object_id"
 }
