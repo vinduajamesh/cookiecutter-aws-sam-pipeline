@@ -182,9 +182,7 @@ Resources:
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-dev
                         ParameterOverrides: >
                             {
-                                "Environment": "dev",
-                                "TableName": "{{cookiecutter.project_table_name}}",
-                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
+                                "Environment": "dev"
                             } 
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Dev
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
@@ -220,9 +218,7 @@ Resources:
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-beta
                         ParameterOverrides: >
                             {
-                                "Environment": "beta",
-                                "TableName": "{{cookiecutter.project_table_name}}",
-                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
+                                "Environment": "beta"
                             }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
@@ -242,7 +238,7 @@ Resources:
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-beta
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Beta
                       OutputArtifacts:
-                        - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}GammaChangeSet
+                        - Name: {{cookiecutter.project_name.lower().replace(' ', '-')}}BetaChangeSet
                       RunOrder: 2
                 - Name: Prod
                   Actions:
@@ -265,9 +261,7 @@ Resources:
                         StackName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-prod
                         ParameterOverrides: >
                             {
-                                "Environment": "prod",
-                                "TableName": "{{cookiecutter.project_table_name}}",
-                                "PrimaryKey": "{{cookiecutter.project_primary_key}}"
+                                "Environment": "prod"
                             }
                         ChangeSetName: {{cookiecutter.project_name.lower().replace(' ', '-')}}-ChangeSet-Prod
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
